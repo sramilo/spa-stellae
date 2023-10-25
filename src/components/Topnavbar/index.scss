@@ -1,0 +1,33 @@
+.logo {
+
+  img {
+    display: block;
+    width: 150px;
+    height: 100px;
+
+    &.sub-logo {
+      width: 50px;
+    }
+  }
+}
+
+.navbar {
+  background-color: #f4f5f7!important;
+  padding-left: 4em;
+  padding-right: 4em;
+  height: 100px;
+}
+
+.nav-bar-custom {
+    background-color: #f4f5f7!important;
+    width: 100%;
+    height: 100px;
+    z-index: 3;
+    min-width: 500px;
+}
+
+.social-media-icons {
+  a {
+    padding-left: 1em;
+  }
+}
