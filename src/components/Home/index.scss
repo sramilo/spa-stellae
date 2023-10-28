@@ -1,8 +1,10 @@
+@import '../../utils/named_variables.scss';
+
 .home-page {
 
     margin-top: 2em;
-    // padding-left: 1.5em;
-    // padding-right: 0;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
     will-change: contents;
     opacity: 0;
     z-index: 1;
@@ -11,18 +13,58 @@
     animation-delay: 1s;
 
     .main-card {
-        width: 322px;
-        height: 450px;
+        height: 30em;
         margin-bottom: 2em;
+        box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3);
+        border-top-width: medium;
+        border-top-style: solid;
+        border-top-color: $primary-color;
+    }
+
+    button {
+        font-size: 1.5rem; // equal to h4 title
+        color: $primary-color;
+        background-color: $grey-color;
+        border: 0.25rem solid $primary-color;
+        // margin-top: 4em;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    button:hover {
+        color: $grey-color;
+    }
+    button::after {
+        content: "";
+        background: $primary-color;
+        position: absolute;
+        z-index: -1;
+        padding: 0.85em 0.75em;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    button.grow_skew_forward::after {
+        left: -30%;
+        right: -30%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.3s ease-out;
+    }
+    button.grow_skew_forward:hover::after {
+        transform: skewX(-45deg) scale(1, 1);
     }
 
     .card-img-top {
-        width: 300px;
-        height: 300px;
+        max-width: 26em;
+        height: 14em;
     }
 
     .card-text {
         padding-top: 1em;
+        text-align: justify;
+        opacity: 0.5;
     }
 
     // .text-zone {
@@ -107,5 +149,5 @@
 }
 
 .main-card {
-    background-color: #f4f5f7!important;
+    background-color: $grey-color!important;
 }

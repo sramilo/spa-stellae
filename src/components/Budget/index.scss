@@ -1,0 +1,113 @@
+@import '../../utils/named_variables.scss';
+
+.budget-page {
+
+    margin-top: 2em;
+    padding-left: 2.7em;
+    padding-right: 2.7em;
+    will-change: contents;
+    opacity: 0;
+    z-index: 1;
+    transform-style: preserve-3d;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+    background-color: 	#f4f5f7;
+
+    .budget-page-first-row {
+        padding-left: 2.7em;
+        padding-right: 2.7em;
+        box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3);
+        border-top-width: medium;
+        border-top-style: solid;
+        border-top-color: $primary-color;
+
+    }
+
+    h1 {
+        margin-top: 1em;
+        text-align: left;
+    }
+
+    .budget-form {
+        
+        width: 100%;
+        margin-top: 20px;
+
+        .input-row {
+            opacity: 0;
+            animation: fadeInUp 2s 1s;
+            animation-fill-mode: forwards;
+            clear: both;
+        }
+
+        .form-control {
+            border: 0;
+            background: $primary-color;
+            height: 50px;
+            font-size: 16px;
+            color:	#f4f5f7;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            padding: 20px!important;
+            min-height: 150px;
+        }
+
+        .invalid-feedback {
+            text-align: justify;
+        }
+
+        ::placeholder {
+            color: 	#f4f5f7;
+            opacity: 1; /* Firefox */
+          }
+          
+        ::-ms-input-placeholder { /* Edge 12 -18 */
+            color: 	#f4f5f7;
+        }
+
+        button {
+            font-size: 2em;
+            // max-width: fit-content;
+            color: $primary-color;
+            background-color: #f4f5f7;
+            border: 0.25rem solid $primary-color;
+            // padding: 0.85em 0.75em;
+            margin: 1rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            font-size: 11px;
+            float: right;
+        }
+
+        button:hover {
+            color: #f4f5f7;
+        }
+        button::after {
+            content: "";
+            background: $primary-color;
+            position: absolute;
+            z-index: -1;
+            padding: 0.85em 0.75em;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        button.grow_skew_forward::after {
+            left: -30%;
+            right: -30%;
+            top: 0;
+            bottom: 0;
+            transform: skewX(-45deg) scale(0, 1);
+            transition: all 0.3s ease-out;
+        }
+
+        button.grow_skew_forward:hover::after {
+            transform: skewX(-45deg) scale(1, 1);
+        }
+    }
+
+}

@@ -1,39 +1,17 @@
-$primary-color: #f4f5f7;
-
 @import 'animate.css';
-@import '~loaders.css/src/animations/pacman.scss';
-@import '~loaders.css/src/animations/semi-circle-spin.scss';
-@import '~loaders.css/src/animations/ball-grid-beat.scss';
-@import '~loaders.css/src/animations/triangle-skew-spin.scss';
-@import '~loaders.css/src/animations/line-spin-fade-loader.scss';
-@import '~loaders.css/src/animations/ball-spin-fade-loader.scss';
-@import '~loaders.css/src/animations/ball-scale-ripple-multiple.scss';
-@import '~loaders.css/src/animations/ball-scale-ripple.scss';
-@import '~loaders.css/src/animations/line-scale-pulse-out-rapid.scss';
-@import '~loaders.css/src/animations/line-scale-pulse-out.scss';
-@import '~loaders.css/src/animations/ball-beat.scss';
-@import '~loaders.css/src/animations/ball-pulse-sync.scss';
-@import '~loaders.css/src/animations/ball-scale-multiple.scss';
-@import '~loaders.css/src/animations/line-scale.scss';
-@import '~loaders.css/src/animations/ball-scale.scss';
-@import '~loaders.css/src/animations/ball-zig-zag-deflect.scss';
-@import '~loaders.css/src/animations/ball-zig-zag.scss';
-@import '~loaders.css/src/animations/cube-transition.scss';
-@import '~loaders.css/src/animations/ball-rotate.scss';
-@import '~loaders.css/src/animations/ball-pulse-rise.scss';
-@import '~loaders.css/src/animations/ball-zig-zag-deflect.scss';
-@import '~loaders.css/src/animations/ball-zig-zag.scss';
-@import '~loaders.css/src/animations/cube-transition.scss';
-@import '~loaders.css/src/animations/ball-rotate.scss';
-@import '~loaders.css/src/animations/ball-pulse-rise.scss';
-@import '~loaders.css/src/animations/ball-clip-rotate-multiple.scss';
-@import '~loaders.css/src/animations/square-spin.scss';
-@import '~loaders.css/src/animations/ball-clip-rotate-pulse.scss';
-@import '~loaders.css/src/animations/ball-clip-rotate.scss';
-@import '~loaders.css/src/animations/ball-grid-pulse.scss';
-@import '~loaders.css/src/animations/ball-pulse.scss';
-
 @import '~bootstrap/scss/bootstrap';
+
+@import './utils/named_variables.scss';
+
+@import '~loaders.css/src/animations/ball-scale-ripple-multiple.scss';
+
+
+@import './components/About/index.scss';
+@import './components/Budget/index.scss';
+@import './components/Contact/index.scss';
+@import './components/Home/index.scss';
+@import './components/Layout/index.scss';
+@import './components/Topnavbar/index.scss';
 
 @font-face {
   font-family: 'Helvetica Neue';
@@ -58,11 +36,9 @@ textarea {
 .loader-active {
   display: block;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
   margin: auto;
-  top: 0;
-  bottom: 0;
+  top: 50%;
   width: 50px;
   height: 50px;
   animation: fadeOut 1s 1s;
@@ -78,6 +54,23 @@ textarea {
 .container-fluid {
     max-width: 1280px;
 }
+
+// .btn-primary {
+//   --bs-btn-color: #fff;
+//   --bs-btn-bg:	$primary-color;
+//   --bs-btn-border-color:	$primary-color;
+//   --bs-btn-hover-color: #f4f5f7;
+//   --bs-btn-hover-bg: $primary-color;
+//   --bs-btn-hover-border-color:	#c0923d;
+//   --bs-btn-focus-shadow-rgb: 49, 132, 253;
+//   --bs-btn-active-color: #f4f5f7;
+//   --bs-btn-active-bg:	$primary-color;
+//   --bs-btn-active-border-color: $primary-color;
+//   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+//   --bs-btn-disabled-color: #f4f5f7;
+//   --bs-btn-disabled-bg:	$primary-color;
+//   --bs-btn-disabled-border-color:	$primary-color;
+// }
 
 .margin-right-2 {
   margin-right: 2em;

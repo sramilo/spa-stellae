@@ -3,5 +3,19 @@ html {
 }
 
 body {
-  background-color: #304c7a!important;
+  background-color:	#f4f5f7!important;
+  /* font: 300 11px/1.4 'Open Sans', 'sans-serif'!important; */
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 14px!important;
+  font-style: normal!important;
+  font-variant: normal!important;
+  font-weight: 400!important;
+  line-height: 1.7em!important;
+  margin: 0;
+  font: 300 11px/1.4 'Helvetica Neue', 'sans-serif';
+  color: #444;
+  overflow: hidden;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
