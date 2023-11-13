@@ -1,16 +1,37 @@
 @import '../../utils/named_variables.scss';
 
-.logo {
-  img {
-    display: block;
-    width: 170px;
-    height: 60px;
+@media (max-width: 360px) {
+  /* CSS that should be displayed if width is equal to or less than 360px goes here */
+
+  .logo {
+    img {
+      display: block;
+      width: 140px;
+      height: 50px;
+    }
+  }
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 361px) {
+  /* CSS that should be displayed if width is equal to or more than 361px goes here */
+  .logo {
+    img {
+      display: block;
+      width: 170px;
+      height: 60px;
+    }
+  }
+  .navbar {
+    padding-left: 2em;
+    padding-right: 2em;
   }
 }
 
 .navbar {
-  padding-left: 2em;
-  padding-right: 2em;
   height: 75px;
 
   button {

@@ -1,6 +1,6 @@
 @import '../../utils/named_variables.scss';
 
-@media (max-width: 390px) {
+@media (max-width: 360px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     .home-page {
         .main-info {
@@ -8,6 +8,45 @@
             padding-left: 3.5rem!important;
             margin-bottom: 2em!important;
             background-position: left!important;
+
+            h1 {
+                font-size: 3em!important;
+            }
+        }
+
+        .arrow-right-img, .arrow-left-img {
+            height: 130px;
+            margin-bottom: 2em;
+        }
+
+        .arrow-right-img {
+            padding-left: 1em;
+        }
+
+        .arrow-left-img {
+            padding-right: 1em;
+        }
+
+        .secondary-info-right, .secondary-info-left {
+            padding-left: 2em;
+            padding-right: 2em;
+            padding-bottom: 1em;
+        }
+    }
+}
+
+@media (min-width: 361px) and (max-width: 390px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .home-page {
+        .main-info {
+            min-height: 350px;
+            padding-left: 3.5rem!important;
+            margin-bottom: 2em!important;
+            background-position: left!important;
+
+            h1 {
+                font-size: 3em!important;
+            }
         }
 
         .arrow-right-img, .arrow-left-img {
@@ -39,6 +78,10 @@
             padding-left: 3.5rem!important;
             margin-bottom: 2em!important;
             background-position: left!important;
+
+            h1 {
+                font-size: 3em!important;
+            }
         }
 
         .arrow-right-img, .arrow-left-img {
@@ -70,6 +113,10 @@
             padding-left: 3.5rem!important;
             margin-bottom: 2em!important;
             background-position: left!important;
+
+            h1 {
+                font-size: 3em!important;
+            }
         }
 
         .arrow-right-img, .arrow-left-img {
