@@ -1,17 +1,33 @@
 @import '../../utils/named_variables.scss';
 
-.logo {
-  img {
-    display: block;
-    width: 170px;
-    height: 60px;
-  }
-}
+.footer {
+  padding: 2em;
+  background-color: $primary-color;
+  color: $background-color;
 
-.navbar {
-  padding-left: 2em;
-  padding-right: 2em;
-  height: 75px;
+  .icon-container {
+      transition: transform 0.2s;
+
+      a {
+          text-decoration: none!important;
+          color: $white!important; /* Restablece el color predeterminado del texto */
+          background: initial!important;
+
+      }
+
+      .icon:hover {
+          // transform: scale(1.2)!important; /* Escala el icono al 120% en el evento hover */
+          color: #87CEEB!important; /* Cambia el color del icono al pasar el cursor sobre él */
+          /* Otros estilos de resaltado que desees */
+          a {
+              color: #87CEEB!important;
+          }
+      }
+  }
+
+  #contained-modal-title-vcenter {
+    padding-left: 27%!important;
+  }
 
   button {
     width: 8rem;

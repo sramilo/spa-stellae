@@ -1,118 +1,170 @@
 import './index.scss';
-import PresupuestoImg from '../../assets/images/presupuesto.png';
-import StellaeLogo from '../../assets/images/logo/stellae-transparent.png';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import LimpiezaProfesionalImg from '../../assets/images/home-img/limpieza-profesional.png';
+import NuestrosServiciosImg from '../../assets/images/home-img/limpieza-coruña.png';
+import ClientesAvalanImg from '../../assets/images/home-img/clientes-avalan.png';
+import TrabajaNosotrosImg from '../../assets/images/home-img/trabajo-limpieza.png';
 import Loader from 'react-loaders';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
+import { Col, Container, Row } from 'react-bootstrap';
+import { useOutletContext } from "react-router-dom";
+import Budget from "../Budget";
+import Contact from '../Contact';
+import { useEffect, useState } from 'react';
 
 
 const Home = () => {
-    const nameArray = ['a', 'm', 'u', 'e', 'l'];
-    const jobArray = ['F', 'u', 'll', ' ', 'S', 't', 'a', 'c', 'k', ' ', 'D', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r'];
+    const breakpoint = 991; // width en que img pasa a ocupar 12 cols
 
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate("/budget");
-    }
-
-    const [letterClass, setLetterClass] = useState('text-animate');
-
+    const [width, setWidth] = useState(0)
+    
     useEffect(() => {
-        return () => {
-            setTimeout(() => {
-                setLetterClass('text-animate-hover');
-            }, 4100);
-        }
+      const handleResize = () => {
+        console.log(window.innerWidth);
+        setWidth(window.innerWidth)
+      };
+      
+      window.addEventListener("resize", handleResize);
+      
+      handleResize();
+      
+      return () => { 
+        window.removeEventListener("resize", handleResize)
+      }
     }, [])
+
+    const outletContext = useOutletContext();
 
     return (
         <>
-            <Container className='home-page' fluid>
-                <Row xs={1} sm={4} md={2} lg={6} xl={4} xxl={4} className='justify-content-between text-center'>
-                    <Col>
-                        <Card className='main-card'>
-                            <Card.Body className=' d-flex flex-column'>
-                                <Card.Title as="h4">Solicita un presupuesto</Card.Title>
-                                <Card.Img className="card-img" variant="top" src={PresupuestoImg} />
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                                </Card.Text>
-                                <Button onClick={handleClick} className='mt-auto ms-auto me-auto grow_skew_forward'>Solicitud</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='main-card'>
-                            <Card.Body className=' d-flex flex-column'>
-                                <Card.Title as="h4">Nuestra Empresa</Card.Title>
-                                <Card.Img className="card-img" variant="top" src={StellaeLogo} />
-                                <Card.Text>
-                                <p>Contamos con una amplia trayectoria ofreciendo servicios de limpieza por toda Galicia.</p>
-                                <p>Contacta con nosotros y te ofreceremos un servicio de calidad a precio competitivo.</p>
-                                </Card.Text>
-                                {/* <Button className='main-button'>Solicitud</Button> */}
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card className='main-card'>
-                            <Card.Body className=' d-flex flex-column'>
-                                <Card.Title as="h4">Solicita un presupuesto</Card.Title>
-                                <Card.Img className="card-img" variant="top" src={PresupuestoImg} />
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                                </Card.Text>
-                                <Button className='mt-auto ms-auto me-auto grow_skew_forward'>Solicitud</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col className='margin-right-2'>
-                        <Card className='main-card'>
-                            <Card.Body className=' d-flex flex-column'>
-                                <Card.Title as="h4">Solicita un presupuesto</Card.Title>
-                                <Card.Img className="card-img" variant="top" src={PresupuestoImg} />
-                                <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                                </Card.Text>
-                                <Button className='mt-auto ms-auto me-auto grow_skew_forward'>Solicitud</Button>
-                            </Card.Body>
-                        </Card>
+            <Container className='home-page cursor-default' fluid>
+                <Row className='ps-4 pt-4 pb-4 main-info justify-content-between'>
+                    <Col xs={12} md={6} className='d-flex align-items-center'>
+                      <h1>
+                          Empresa de limpieza en Galicia
+                      </h1>
                     </Col>
                 </Row>
-                {/* <div className="container home-page">
-                    <div className="text-zone">
-                        <h1>
-                            <span className={letterClass}>H</span>
-                            <span className={`${letterClass} _12`}>i,</span>
-                            <br />
-                            <span className={`${letterClass} _13`}>I</span>
-                            <span className={`${letterClass} _14`}>'m</span>
-                            <img src={LogoTitle} alt="developer" />
-                            <AnimatedLetters
-                                letterClass={letterClass}
-                                strArray={nameArray}
-                                idx={15}
-                            />
-                            <br />
-                            <AnimatedLetters
-                                letterClass={letterClass}
-                                strArray={jobArray}
-                                idx={21}
-                            />
-                        </h1>
+                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-right-img' src={LimpiezaProfesionalImg} alt='' />
+                  </Col>
+                  <Col xs={12} lg={6} xl={5} className='secondary-info-right'>
+                    <Row className='mb-3'>
+                      <Col>
                         <h2>
-                            Frontend Developer / Backend developer / Javascript and Java expert
+                          Limpieza Profesional
                         </h2>
-                        <Link to='/contact' className='flat-button'>CONTACT ME</Link>
-                    </div>
-                    <Logo />
-                </div> */}
+                      </Col>
+                    </Row>
+                    <Row className='text-justify'>
+                      <Col>
+                        <div className='mb-3'>
+                            Nuestra <span className='fw-bold'>Agencia de Limpieza</span> ofrece servicios de mantenimiento a largo plazo así como acondicionamientos por horas.
+                        </div>
+                        <div className='mb-3'>
+                          <span className='fw-bold'>Mantenimientos: </span>Hoteles, Oficinas, Colegios, Universidades, Gimnasios, Comunidades, Entidades bancarias, Centros comerciales, Empresas de construcción, Parkings, Grandes superficies.
+                        </div>
+                        <div className='mb-3'>
+                          <span className='fw-bold'>Acondicionamientos: </span>Limpieza de cristales, Limpieza de moquetas, Limpieza de Naves industriales, Limpieza de obra, Limpieza general de viviendas unifamiliares o chalets.
+                        </div>
+                        <div className='mb-3'>
+                          En <span className='fw-bold'>Stellae S.L.</span> contamos con un equipo de profesionales bien cualificados que nos permiten garantizar la máxima eficacia en cada uno de nuestros trabajos.
+                        </div>
+                        <div className='mb-3'>
+                            Simplemente <a className='link' onClick={() => outletContext?.contactPageRef?.scrollIntoView({ block: "start", behavior: "smooth" })}>contacta con nosotros</a> y solicita tu presupuesto de limpieza sin compromiso.
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                  {width <= breakpoint && 
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-left-img' src={NuestrosServiciosImg} alt='' />
+                  </Col>}
+                  <Col xs={12} lg={6} xl={5} className='secondary-info-left'>
+                    <Row className='mb-3'>
+                      <Col>
+                        <h2>
+                          ¿Dónde puedes contratar nuestros servicios?
+                        </h2>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <div>
+                            Actualmente ofrecemos los servicios de limpieza mencionados en A Coruña, Pontevedra y Lugo.
+                        </div>
+                        <div>
+                            Si eres una empresa o particular ubicada en alguna de estas provincias no dudes en contactar con nosotros.
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  {width > breakpoint && 
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-left-img' src={NuestrosServiciosImg} alt='' />
+                  </Col>}
+                </Row>
+                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-right-img' src={ClientesAvalanImg} alt='' />
+                  </Col>
+                  <Col xs={12} lg={6} xl={5} className='secondary-info-right'>
+                    <Row className='mb-3'>
+                      <Col>
+                        <h2>
+                          Nuestros clientes nos avalan
+                        </h2>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <p>
+                            Limpian que da gusto <br/>
+                            - Empresa X
+                        </p>
+                        <p>
+                            Nunca había visto una empresa de limpieza que limpiase tanto y tan bien <br/>
+                            - Hotel Y
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                  {width <= breakpoint && 
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-left-img' src={TrabajaNosotrosImg} alt='' />
+                  </Col>}
+                  <Col xs={12} lg={6} xl={5} className='secondary-info-left'>
+                    <Row className='mb-3'>
+                      <Col>
+                        <h2>
+                          Trabaja con nosotros como profesional de la limpieza
+                        </h2>
+                      </Col>
+                    </Row>
+                    <Row className='text-justify'>
+                      <Col>
+                        <div>
+                          Si buscas trabajo como limpiador o limpiadora en el sector de la limpieza en A Coruña, Pontevedra o Lugo, 
+                          no dudes en contactar con nosotros enviando tu curriculum e información relevante a nuestro 
+                          <a className='ms-2 me-2 link' onClick={() => outletContext?.contactPageRef?.scrollIntoView({ block: "start", behavior: "smooth" })}>correo electrónico</a> 
+                          y nos pondremos en contacto contigo lo antes posible.
+                        </div>
+                        <div>
+                          Tanto si buscas trabajo de limpieza por horas como a tiempo parcial o a jornada completa, contáctanos para que podamos ofrecerte lo que mejor se ajuste a ti.
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  {width > breakpoint && 
+                  <Col xs={12} lg={6} xl={6}>
+                    <img className='arrow-left-img' src={TrabajaNosotrosImg} alt='' />
+                  </Col>}
+                </Row>
+                <Contact></Contact>
+                <Budget></Budget>
             </Container>
             <Loader type='ball-scale-ripple-multiple' />
         </>

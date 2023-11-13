@@ -7,46 +7,87 @@ import emailjs from '@emailjs/browser';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
+import * as formik from 'formik';
+import * as yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
+    const { Formik } = formik;
+    const schema = yup.object().shape({
+        name: yup.string().required("Por favor, introduce un nombre"),
+        email: yup.string().email("El email debe tener un formato válido").required("Por favor, introduce un email"),
+        phoneNumber: yup.string().matches(/(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}/, 'El número de teléfono debe tener un formato válido').required("Por favor, introduce un teléfono"),
+        message: yup.string().required("Por favor, explícanos qué necesitas para que podamos ofrecerte un presupuesto"),
+        // terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
+    });
+
     const [validated, setValidated] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const refForm = useRef();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        // const form = event.currentTarget;
-        if (refForm.current.checkValidity()) {
-            sendEmail();
-        } else {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-    
+    const sendEmail = (actions) => {
         setValidated(true);
-    };
+        // setIsLoading(true);
 
-    const sendEmail = () => {
-
-        emailjs
+        const resolveWithSomeData = () => emailjs
             .sendForm(
                 'spa-stellae',
                 'template_lr211w6',
                 refForm.current,
                 'SGOYOzUe1CrlQwc_a'
-            )
-            .then(
-                () => {
-                    toast("Message successfully sent!");
-                    // alert('Message successfully sent!');
-                    refForm.current.reset();
+            );
+        toast.promise(
+            resolveWithSomeData,
+            {
+            pending: {
+                render() {
+                    setIsLoading(true);
+                    return "Enviando formulario";
                 },
-                () => {
-                    toast("Ha ocurrido un error. Por favor, intentalo de nuevo en unos instantes");
-                    // alert('Failed to send the message, please try again');
+                icon: true,
+            },
+            success: {
+                render({}) {
+                    setIsLoading(false);
+                    actions.resetForm();
+                    setValidated(false);
+                    return "El formulario se ha enviado correctamente. En cuanto tengamos más información nos pondremos en contacto contigo.";
+                },
+                // other options
+                icon: true,
+            },
+            error: {
+                render() {
+                    setIsLoading(false);
+                // When the promise reject, data will contains the error
+                    return "Ha ocurrido un error. Por favor, inténtalo de nuevo en unos instantes.";
                 }
-            )
+            }
+            }
+        )
+
+        // emailjs
+        //     .sendForm(
+        //         'spa-stellae',
+        //         'template_lr211w6',
+        //         refForm.current,
+        //         'SGOYOzUe1CrlQwc_a'
+        //     )
+        //     .then(
+        //         () => {
+        //             toast.success("El formulario se ha enviado correctamente. En cuanto tengamos más información nos pondremos en contacto contigo.");
+        //             actions.resetForm();
+        //             setValidated(false);
+        //             setIsLoading(false);
+        //         },
+        //         () => {
+        //             toast.error("Ha ocurrido un error. Por favor, inténtalo de nuevo en unos instantes.");
+        //             setIsLoading(false);
+        //             // alert('Failed to send the message, please try again');
+        //         }
+        //     )
+    
     }
     
 
@@ -57,139 +98,161 @@ const Contact = () => {
                 <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                     <Row>
                         <Col>
-                            <h1>
-                                Solicita un presupuesto
-                                {/* <AnimatedLetters
-                                    letterClass={letterClass}
-                                    strArray={"".split("")}
-                                    idx={15}
-                                /> */}
+                            <h1 className='text-center'>
+                                Solicita un presupuesto de limpieza
                             </h1>
                         </Col>
                     </Row>
                     <Row className='budget-form'>
-                        <Col sm={8}>
-                            <Form noValidate validated={validated} ref={refForm} onSubmit={handleSubmit}>
-                                <Row className='mb-3 input-row'>
-                                    <Form.Group as={Col} controlId="name">
-                                        {/* <Form.Label>Nombre y Apellidos</Form.Label> */}
-                                        <Form.Control
-                                            required
-                                            type="text"
-                                            name='name'
-                                            placeholder="Nombre"
-                                            defaultValue=""
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, introduce un nombre
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-                                <Row className='mb-3 input-row'>
-                                    <Form.Group as={Col} controlId="email">
-                                        {/* <Form.Label>Nombre y Apellidos</Form.Label> */}
-                                        <Form.Control
-                                            required
-                                            type="email"
-                                            name='email'
-                                            placeholder="Email"
-                                            defaultValue=""
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, introduce un email válido
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-                                <Row className='mb-3 input-row'>
-                                    <Form.Group as={Col} controlId="phoneNumber">
-                                        {/* <Form.Label>Nombre y Apellidos</Form.Label> */}
-                                        <Form.Control
-                                            required
-                                            type="text"
-                                            name='phoneNumber'
-                                            placeholder="Teléfono"
-                                            defaultValue=""
-                                            pattern='(\\+34|0034|34)?[ -]*(6|7|8|9)[ -]*([0-9][ -]*){8}'
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, introduce un número de teléfono válido
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-                                <Row className='mb-3 input-row'>
-                                    <Form.Group as={Col} controlId="message">
-                                        {/* <Form.Label>Nombre y Apellidos</Form.Label> */}
-                                        <Form.Control
-                                            required
-                                            as="textarea"
-                                            name='message'
-                                            rows={6}
-                                            placeholder="Mensaje"
-                                            defaultValue=""
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Por favor, explícanos qué necesitas para que podamos ofrecerte un presupuesto
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-                                <Row className='mb-3 input-row'>
-                                    <Col>
-                                        <Button className='flat-button grow_skew_forward' type='submit'>ENVIAR &rarr;</Button>
-                                    </Col>
-                                </Row>
-                            </Form>
-                            {/* <form ref={refForm} onSubmit={sendEmail}>
-                                <ul>
-                                    <li>
-                                        <input type='text' name='name' placeholder='Nombre y Apellidos' required />
-                                    </li>
-                                    <li>
-                                        <input type='email' name='email' placeholder='Email' required />
-                                    </li>
-                                    <li>
-                                        <input type="text"  name="subject" placeholder="Teléfono de contacto" required />
-                                    </li>
-                                    <li>
-                                        <textarea name="message" placeholder="Mensaje" required />
-                                    </li>
-                                    <li>
-                                        <input type="submit" className='flat-button' value="ENVIAR" />
-                                    </li>
-                                </ul>
-                            </form> */}
+                        <Col sm={12} md={5}>
+                            <Formik
+                                validationSchema={schema}
+                                validateOnChange={false}
+                                validateOnBlur={true}
+                                validateOnMount={false}
+                                onSubmit={(_ , actions) => sendEmail(actions)}
+                                initialValues={{
+                                    name: '',
+                                    email: '',
+                                    phoneNumber: '',
+                                    message: '',
+                                }}
+                            >
+                            {({ handleSubmit, handleChange, values, touched, errors }) => (
+                                <Form validated={validated} ref={refForm} onSubmit={handleSubmit}>
+                                    <Row className='mb-3 input-row'>
+                                        <Form.Group as={Col} controlId="name">
+                                            <Form.Label>* Nombre y Apellidos</Form.Label>
+                                            <Form.Control
+                                                required
+                                                type="text"
+                                                name='name'
+                                                value={values.name}
+                                                onChange={handleChange}
+                                                isValid={touched.name && !errors.name}
+                                                isInvalid={errors.name}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.name}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Row className='mb-3 input-row'>
+                                        <Form.Group as={Col} controlId="email">
+                                            <Form.Label>* Email</Form.Label>
+                                            <Form.Control
+                                                required
+                                                type="email"
+                                                name='email'
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                isValid={touched.email && !errors.email}
+                                                isInvalid={errors.email}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.email}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Row className='mb-3 input-row'>
+                                        <Form.Group as={Col} controlId="phoneNumber">
+                                            <Form.Label>* Teléfono</Form.Label>
+                                            <Form.Control
+                                                required
+                                                type="text"
+                                                name='phoneNumber'
+                                                value={values.phoneNumber}
+                                                onChange={handleChange}
+                                                isValid={touched.phoneNumber && !errors.phoneNumber}
+                                                isInvalid={errors.phoneNumber}
+                                            />
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.phoneNumber}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Row className='mb-3 input-row'>
+                                        <Form.Group as={Col} controlId="message">
+                                            <Form.Label>* Explíquenos sus necesidades</Form.Label>
+                                            <Form.Control
+                                                required
+                                                as="textarea"
+                                                name='message'
+                                                rows={6}
+                                                value={values.message}
+                                                onChange={handleChange}
+                                                isValid={touched.message && !errors.message}
+                                                isInvalid={errors.message}
+                                            />
+                                            <Form.Control.Feedback></Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.message}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Row className='mb-3 input-row'>
+                                        <Col>
+                                            {isLoading
+                                            ?
+                                            <button disabled={true} className='btn grow_skew_forward'>
+                                                ENVIANDO...
+                                            </button>
+                                            :
+                                            <button className='btn grow_skew_forward' type='submit'>
+                                                ENVIAR &rarr;
+                                            </button>
+                                            }
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            )}
+                            </Formik>
                         </Col>
-                        <Col sm={4}>
+                        <Col sm={12} md={7} className='text-justify ms-auto'>
+                            <h2>PREGUNTAS FRECUENTES:</h2>
+                            <h4>
+                                ¿Cuánto tiempo tardaré en obtener una respuesta?
+                            </h4>
                             <p>
-                                Envíamos un resumen de lo que necesitas junto con tus datos de contacto y nos pondremos en contacto lo antes posible para darte una solución.
+                                Lo más habitual es que tardemos menos de 24h en días laborables en proporcionar una respuesta. Si hubiese una demora de más 2 días laborables no dude en contactar con nosotros a través de nuestro teléfono.
+                            </p>
+                            <h4>¿Cuánto tiempo será necesario para limpiar mi espacio y cuantas personas enviarán?</h4>
+                            <p>
+                                El tiempo de limpieza variará según el tamaño y la complejidad del espacio. Normalmente, enviamos a un equipo de dos a tres personas para garantizar eficiencia y calidad.
+                            </p>
+                            <h4>¿Cómo ajustan sus servicios a mis necesidades específicas?</h4>
+                            <p>
+                                Trabajamos estrechamente contigo para entender tus necesidades y expectativas. Personalizamos nuestros servicios según tus preferencias y estamos abiertos a recibir retroalimentación para mejorar continuamente.
+                            </p>
+                            <h4>¿Cómo manejan los objetos frágiles o valiosos durante la limpieza?</h4>
+                            <p>
+                                Instruimos a nuestro personal para que sea especialmente cuidadoso con objetos frágiles o valiosos. Siempre recomendamos notificar sobre artículos especialmente delicados para tomar precauciones adicionales.
+                            </p>
+                            <h4>¿Se aplican medidas de sostenibilidad en las limpiezas?</h4>
+                            <p>
+                                Utilizamos productos de limpieza ecológicos siempre que sea posible y práctico. Además, nos esforzamos por reducir el desperdicio y reciclar adecuadamente los materiales utilizados.
+                            </p>
+                            <h4>¿Ofrecen descuentos o paquetes para servicios regulares?</h4>
+                            <p>
+                                Sí, ofrecemos descuentos para contratos a largo plazo o servicios regulares. Podemos discutir opciones personalizadas para adaptarnos a tu presupuesto y requisitos.
                             </p>
                         </Col>
                     </Row>
                 </Col>
             </Row>
+            <ToastContainer
+                position={toast.POSITION.BOTTOM_RIGHT}
+                autoClose={7000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </Container>
-        {/* <div className='container contact-page'>
-            <div className='text-zone'>
-                
-            </div>
-            <div className='info-map'>
-                Samuel Ramilo, <br />
-                Spain, <br />
-                Avenida de Portugal, 34, 32002 <br />
-                Ourense, Galicia <br />
-                <span>samuelramiloconde@gmail.com</span>
-            </div>
-            <div className='map-wrap'>
-                <MapContainer center={[44, 12]} zoom={13}>
-                    <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-                    <Marker position={[44, 12]}>
-                        <Popup>Samuel lives here, come over for a cup of coffee and a nice chat :)</Popup>
-                    </Marker>
-
-                </MapContainer>
-            </div>
-        </div> */}
-        <ToastContainer />
-        <Loader  type='ball-scale-ripple-multiple' />
         </>
     )
 }

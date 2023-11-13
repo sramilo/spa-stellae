@@ -1,26 +1,40 @@
 @import '../../utils/named_variables.scss';
 
+@media (max-width: 575px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .budget-page {
+        padding-left: 2em;
+        padding-right: 1em;
+    }
+}
+
+@media (min-width: 576px) and  (max-width: 1599px) {
+    /* CSS that should be displayed if width is between 576px and 1599px goes here */
+    .budget-page {
+        padding: 0;
+    }
+}
+
+@media (min-width: 1600px) {
+    /* CSS that should be displayed if width is equal to or more than 1600px goes here */
+    .budget-page {
+        padding-left: 2.7em;
+        padding-right: 2.7em;
+    }
+}
+
 .budget-page {
 
-    margin-top: 2em;
-    padding-left: 2.7em;
-    padding-right: 2.7em;
     will-change: contents;
     opacity: 0;
     z-index: 1;
     transform-style: preserve-3d;
     animation: fadeIn 1s forwards;
     animation-delay: 1s;
-    background-color: 	#f4f5f7;
+    background-color: $background-color;
 
     .budget-page-first-row {
-        padding-left: 2.7em;
-        padding-right: 2.7em;
-        box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3);
-        border-top-width: medium;
-        border-top-style: solid;
-        border-top-color: $primary-color;
-
+        padding-bottom: 2.7em;
     }
 
     h1 {
@@ -32,22 +46,30 @@
         
         width: 100%;
         margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
 
-        .input-row {
-            opacity: 0;
-            animation: fadeInUp 2s 1s;
-            animation-fill-mode: forwards;
-            clear: both;
+        :first-child{
+            text-align: left;
+        }
+
+        .form-label {
+            color: $primary-color;
+            font-weight: bold;
         }
 
         .form-control {
             border: 0;
-            background: $primary-color;
+            // background: $primary-color;
             height: 50px;
-            font-size: 16px;
-            color:	#f4f5f7;
+            font-size: inherit;
+            // color:	#f4f5f7;
             padding: 0 20px;
             box-sizing: border-box;
+
+            &:focus {
+                box-shadow: 0 0 0 0.25rem rgb(136 207 236 / 70%);
+            }
         }
 
         textarea {
@@ -69,37 +91,36 @@
         }
 
         button {
-            font-size: 2em;
-            // max-width: fit-content;
+            width: 8rem;
+            min-width: fit-content;
             color: $primary-color;
-            background-color: #f4f5f7;
+            background-color: $background-color;
             border: 0.25rem solid $primary-color;
-            // padding: 0.85em 0.75em;
             margin: 1rem;
             position: relative;
             z-index: 1;
             overflow: hidden;
-            font-size: 11px;
+            font-size: 14px;
             float: right;
         }
 
-        button:hover {
-            color: #f4f5f7;
-        }
-        button::after {
-            content: "";
-            background: $primary-color;
-            position: absolute;
-            z-index: -1;
-            padding: 0.85em 0.75em;
-            display: block;
-            transition: all 0.3s ease;
+        button.grow_skew_forward:hover {
+            color: $background-color; // #f4f5f7;
+            border: 0.25rem solid $light-blue;
+            text-shadow: 4px 4px 16px rgba(0,0,0,0.6);
         }
 
         button.grow_skew_forward::after {
-            left: -30%;
-            right: -30%;
-            top: 0;
+            content: "";
+            background: $light-blue;
+            position: absolute;
+            z-index: -1;
+            padding: 1.85em 0.75em 1.7em;
+            display: block;
+            transition: all 0.3s ease;
+            left: -20%;
+            right: -20%;
+            top: -9px;
             bottom: 0;
             transform: skewX(-45deg) scale(0, 1);
             transition: all 0.3s ease-out;
@@ -111,3 +132,12 @@
     }
 
 }
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

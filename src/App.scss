@@ -5,7 +5,6 @@
 
 @import '~loaders.css/src/animations/ball-scale-ripple-multiple.scss';
 
-
 @import './components/About/index.scss';
 @import './components/Budget/index.scss';
 @import './components/Contact/index.scss';
@@ -28,14 +27,30 @@
   src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2');
 }
 
+:root {
+  --toastify-color-success: #87CEEB;
+}
+
 input,
 textarea {
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
+.Toastify__toast-container {
+  position: absolute;
+}
+
+.loader-hidden {
+  opacity: 0;
+}
+
 .loader-active {
   display: block;
-  position: absolute;
+  position: fixed;
   left: 50%;
   margin: auto;
   top: 50%;
@@ -51,27 +66,172 @@ textarea {
   }
 }
 
-.container-fluid {
-    max-width: 1280px;
+.CookieConsent {
+  background: $primary-color!important;
+  color: $background-color!important;
+  justify-content: center!important;
+  align-items: center!important;
 }
 
-// .btn-primary {
-//   --bs-btn-color: #fff;
-//   --bs-btn-bg:	$primary-color;
-//   --bs-btn-border-color:	$primary-color;
-//   --bs-btn-hover-color: #f4f5f7;
-//   --bs-btn-hover-bg: $primary-color;
-//   --bs-btn-hover-border-color:	#c0923d;
-//   --bs-btn-focus-shadow-rgb: 49, 132, 253;
-//   --bs-btn-active-color: #f4f5f7;
-//   --bs-btn-active-bg:	$primary-color;
-//   --bs-btn-active-border-color: $primary-color;
-//   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-//   --bs-btn-disabled-color: #f4f5f7;
-//   --bs-btn-disabled-bg:	$primary-color;
-//   --bs-btn-disabled-border-color:	$primary-color;
-// }
+#rcc-confirm-button {
+  width: 8rem!important;
+  min-width: fit-content!important;
+  color: black!important;
+  background: $light-blue!important;
+  background-color: $light-blue!important;
+  border: 0.05rem solid white!important;
+  margin: 1rem!important;
+  z-index: 1!important;
+  overflow: hidden!important;
+  font-size: 14px!important;
+
+  &:hover {
+    background-color: #ffffff!important;
+    // border: 0.05rem solid #4095b9!important;
+    // color: $background-color!important;
+  }
+}
+
+#rcc-decline-button {
+  width: 8rem!important;
+  min-width: fit-content!important;
+  color: $background-color!important;
+  background: $primary-color!important;
+  background-color: $primary-color!important;
+  border: 0.05rem solid white!important;
+  margin: 1rem!important;
+  z-index: 1!important;
+  overflow: hidden!important;
+  font-size: 14px!important;
+
+  &:hover {
+    background-color: $background-color!important;
+    border: 0.05rem solid $background-color!important;
+    color: black!important;
+  }
+}
+
+a:not([href]):not([class]) {
+  color: $white;
+  text-decoration: underline;
+  &:hover {
+    color: $light-blue;
+    cursor: pointer;
+  }
+}
+
+a {
+  color: $white;
+  &:hover {
+    color: $light-blue;
+  }
+}
+
+.modal-header {
+  justify-content: center;
+  h2 {
+    color: black;
+    // text-shadow: 2px 2px 16px rgb(135 206 235 / 60%);
+  }
+  h4 {
+    color: $light-blue;
+    // text-shadow: 2px 2px 16px rgb(135 206 235 / 60%);
+  }
+
+  h2, h4 {
+    font-weight: bold;
+  }
+
+  .btn-close {
+    position: absolute;
+    right: 1em;
+    padding-top: 3em;
+  }
+}
+
+.modal-body {
+  margin-left: 1em;
+  margin-right: 1em;
+
+  p, ul {
+    text-align: justify;
+  }
+  
+  h3, h4 {
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+
+  h4 {
+    // color: $light-blue;
+    // text-shadow: 2px 2px 16px rgb(135 206 235 / 60%);
+  }
+}
+
+.modal-footer {
+
+  button {
+    width: 8rem;
+    min-width: fit-content;
+    color: $primary-color;
+    background-color: $background-color;
+    border: 0.25rem solid $primary-color;
+    margin: 1rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    font-size: 14px;
+    float: right;
+  }
+
+  button.grow_skew_forward:hover {
+      color: $background-color; // #f4f5f7;
+      border: 0.25rem solid $light-blue;
+      text-shadow: 4px 4px 16px rgba(0,0,0,0.6);
+      // transform: scale(1.1);
+  }
+
+  button.grow_skew_forward::after {
+      content: "";
+      background-color: $light-blue;
+      position: absolute;
+      z-index: -1;
+      padding: 1.85em 0.75em 1.7em;
+      display: block;
+      transition: all 0.3s ease;
+      left: -20%;
+      right: -20%;
+      top: -9px;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.3s ease-out;
+  }
+
+  button.grow_skew_forward:hover::after {
+      transform: skewX(-45deg) scale(1, 1);
+  }
+}
 
 .margin-right-2 {
-  margin-right: 2em;
+  margin-right: 2em!important;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.fa-spinner {
+  animation: spin infinite 1s linear;
+
+  /*You can increase or decrease the timer (5s) to 
+   increase or decrease the speed of the spinner*/
+}
+
+@keyframes spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
 }

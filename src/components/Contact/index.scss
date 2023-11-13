@@ -1,5 +1,54 @@
 @import '../../utils/named_variables.scss';
 
+
+.contact-page {
+
+    color: $black;
+    background-color: #dcdcdc73;
+    padding-top: 1em;
+
+    // .contact-page-header {
+    //     color: #030b5d
+    // }
+
+    .contact-info {
+        font-size: 1.5em;
+    }
+
+    .contact-value {
+        color: $primary-color;
+        font-weight: 700;
+    }
+
+    .icon-container {
+        transition: transform 0.2s;
+
+        a {
+            padding: 0;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            text-decoration: none!important;
+            color: initial!important; /* Restablece el color predeterminado del texto */
+            background: initial!important;
+
+        }
+    }
+
+    .icon:hover {
+        // transform: scale(1.2)!important; /* Escala el icono al 120% en el evento hover */
+        color: #87CEEB!important; /* Cambia el color del icono al pasar el cursor sobre él */
+        /* Otros estilos de resaltado que desees */
+        a {
+            color: #87CEEB!important;
+        }
+    }
+
+    // .contact-title {
+    //     color: #030b5d;
+    //     font-weight: 500;
+    // }
+}
+
 .contact-form {
     width: 100%;
     margin-top: 20px;
@@ -56,23 +105,6 @@
         padding: 20px;
         min-height: 150px;
         box-sizing: border-box;
-    }
-
-    .flat-button {
-        color: #ffd700;
-        background: 0 0;
-        font-size: 11px;
-        letter-spacing: 3px;
-        text-decoration: none;
-        padding: 8px 10px;
-        border: 1px solid #ffd700;
-        float: right;
-        border-radius: 4px;
-        cursor: pointer;
-        // &:hover {
-        //     background: #ffd700;
-        //     color: #333;
-        // }
     }
 }
 
