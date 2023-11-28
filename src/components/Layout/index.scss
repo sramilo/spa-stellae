@@ -1,5 +1,12 @@
 @import '../../utils/named_variables.scss';
 
+@media (min-width: 1240px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .page {
+        width: 80%;
+    }
+}
+
 .page {
     max-width: 1600px;
     height: 100%;
