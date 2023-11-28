@@ -43,7 +43,7 @@ const Home = () => {
                       </h1>
                     </Col>
                 </Row>
-                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                <Row className='justify-content-center mb-3 align-items-center text-center secondary-info-container'>
                   <Col xs={12} lg={6} xl={6}>
                     <img className='arrow-right-img' src={LimpiezaProfesionalImg} alt='' />
                   </Col>
@@ -76,7 +76,7 @@ const Home = () => {
                     </Row>
                   </Col>
                 </Row>
-                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                <Row className='justify-content-center mb-3 align-items-center text-center secondary-info-container'>
                   {width <= breakpoint && 
                   <Col xs={12} lg={6} xl={6}>
                     <img className='arrow-left-img' src={NuestrosServiciosImg} alt='' />
@@ -105,7 +105,7 @@ const Home = () => {
                     <img className='arrow-left-img' src={NuestrosServiciosImg} alt='' />
                   </Col>}
                 </Row>
-                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                <Row className='justify-content-center mb-3 align-items-center text-center secondary-info-container'>
                   <Col xs={12} lg={6} xl={6}>
                     <img className='arrow-right-img' src={ClientesAvalanImg} alt='' />
                   </Col>
@@ -131,7 +131,7 @@ const Home = () => {
                     </Row>
                   </Col>
                 </Row>
-                <Row className='justify-content-center align-items-center text-center secondary-info-container'>
+                <Row className='justify-content-center mb-3 align-items-center text-center secondary-info-container'>
                   {width <= breakpoint && 
                   <Col xs={12} lg={6} xl={6}>
                     <img className='arrow-left-img' src={TrabajaNosotrosImg} alt='' />
