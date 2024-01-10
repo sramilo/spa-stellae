@@ -283,7 +283,7 @@
         }
     }
 }
-@media (min-width: 1337px) and (max-width: 1529px) {
+@media (min-width: 1337px) and (max-width: 1800px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     .home-page {
         .main-info {
@@ -291,15 +291,15 @@
         }
 
         .arrow-right-img {
-            height: 350px;
+            height: 275px;
         }
 
         .arrow-left-img {
-            height: 350px;
+            height: 275px;
         }
     }
 }
-@media (min-width: 1530px) {
+@media (min-width: 1801px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     .home-page {
         .main-info {
@@ -311,11 +311,11 @@
         }
 
         .arrow-right-img {
-            height: 400px;
+            height: 350px;
         }
 
         .arrow-left-img {
-            height: 400px;
+            height: 350px;
         }
     }
 }

@@ -33,7 +33,7 @@ const Contact = () => {
                 </Col>
             </Row>
             <Row className='contact-info justify-content-center align-items-center'>
-                <Col xs={12} sm={6} md={3} className='mb-4'>
+                {/* <Col xs={12} sm={6} md={3} className='mb-4'>
                     <Row className='mt-2 contact-title'>
                         <Col>
                             <FontAwesomeIcon icon={faThumbsUp} color='#4c4c4c'></FontAwesomeIcon>
@@ -59,7 +59,7 @@ const Contact = () => {
                             </Nav>
                         </Col>
                     </Row>
-                </Col>
+                </Col> */}
                 <Col xs={12} sm={6} md={3} className='mb-4'>
                     <Row>
                         <Col>

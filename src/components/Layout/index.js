@@ -12,7 +12,7 @@ const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 const Layout = () => {
 
     const email = "stellae&#64;gmail&#46;com";
-    const phoneNumber = "+34663633443";
+    const phoneNumber = "+34606665420";
     const facebookLink = "https://github.com/sramilo";
     const linkedinLink = "https://www.linkedin.com/in/samuel-ramilo";
     const instagramLink = "https://www.linkedin.com/in/samuel-ramilo";
