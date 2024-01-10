@@ -9,7 +9,7 @@ const Topnavbar = ({ contactPageRef }) => {
     return (
         <Navbar className="bg-body-tertiary sticky-top">
             <Container fluid>
-                <Navbar.Brand className='logo' href="/"><img src={LogoS} alt='empresas-limpieza-stellae' /></Navbar.Brand>
+                <Navbar.Brand className='logo' href="/"><img src={LogoR} alt='empresas-limpieza-stellae' /></Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     {/* <Nav.Link href="https://github.com/sramilo"><FontAwesomeIcon size='xl' icon={faFacebook} color='#030B5D' /></Nav.Link>
