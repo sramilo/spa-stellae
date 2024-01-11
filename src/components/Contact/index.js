@@ -1,13 +1,10 @@
-import Loader from 'react-loaders';
 import './index.scss';
-import AnimatedLetters from '../AnimatedLetters';
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { useRef } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { Col, Container, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+// import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import parse from 'html-react-parser';
 import { useOutletContext } from 'react-router-dom';
 

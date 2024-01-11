@@ -1,16 +1,11 @@
-import Loader from 'react-loaders';
 import './index.scss';
-import AnimatedLetters from '../AnimatedLetters';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import * as formik from 'formik';
 import * as yup from 'yup';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
     const { Formik } = formik;

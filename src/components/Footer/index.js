@@ -1,8 +1,8 @@
 import './index.scss';
-import { Button, Col, Container, Modal, Nav, Row } from 'react-bootstrap';
+import { Col, Container, Modal, Row } from 'react-bootstrap';
 import parse from 'html-react-parser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
 
 const Footer = ({
@@ -10,9 +10,9 @@ const Footer = ({
     emailLink,
     phoneNumber,
     phoneNumberLink,
-    facebookLink,
-    linkedinLink,
-    instagramLink,
+    // facebookLink,
+    // linkedinLink,
+    // instagramLink,
     setModalCookiesShow
 }) => {
 
@@ -93,7 +93,7 @@ const Footer = ({
                             <p>En cumplimiento con el deber de información dispuesto en la Ley 34/2002 de Servicios de la Sociedad de la Información y el Comercio Electrónico (LSSI-CE) de 11 de julio, se facilitan a continuación los siguientes datos de información general de este sitio web:</p>
                             <p>La titularidad de este sitio web,&nbsp;https://www.stellaelimpiezas.es, (en adelante, Sitio Web) la ostenta:&nbsp;Stellae Limpiezas, cuyos datos de contacto son:</p>
                             {/* <p>Dirección:&nbsp;TODO, TEO A Coruña</p> */}
-                            <p>Teléfono de contacto:&nbsp;+34606665420</p>
+                            <p>Teléfono de contacto:&nbsp;606665420</p>
                             <p>Email de contacto:&nbsp;{parse(email)}</p>
                             <h3>II. TÉRMINOS Y CONDICIONES GENERALES DE USO</h3>
                             <h4>El objeto de las condiciones: El Sitio Web</h4>
@@ -172,7 +172,7 @@ const Footer = ({
                             </ul>
                             <h4>Identidad del responsable del tratamiento de los datos personales</h4>
                             {/* <p>Dirección:&nbsp;TODO, TEO A Coruña</p> */}
-                            <p>Teléfono de contacto:&nbsp;+34606665420</p>
+                            <p>Teléfono de contacto:&nbsp;606665420</p>
                             <p>Email de contacto:&nbsp;{parse(email)}</p>
                             <h4>Registro de Datos de Carácter Personal</h4>
                             <p>En cumplimiento de lo establecido en el RGPD y la LOPD-GDD, le informamos que los datos personales recabados por&nbsp;Stellae Limpiezas, mediante los formularios extendidos en sus páginas quedarán incorporados y serán tratados en nuestro fichero con el fin de poder facilitar, agilizar y cumplir los compromisos establecidos entre&nbsp;Stellae Limpiezas&nbsp;y el Usuario o el mantenimiento de la relación que se establezca en los formularios que este rellene, o para atender una solicitud o consulta del mismo. Asimismo, de conformidad con lo previsto en el RGPD y la LOPD-GDD, salvo que sea de aplicación la excepción prevista en el artículo 30.5 del RGPD, se mantine un registro de actividades de tratamiento que especifica, según sus finalidades, las actividades de tratamiento llevadas a cabo y las demás circunstancias establecidas en el RGPD.</p>

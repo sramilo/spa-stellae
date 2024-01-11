@@ -1,7 +1,5 @@
 import './index.scss';
 import LogoS from '../../assets/images/logo/logo-azul.png';
-import LogoN from '../../assets/images/logo/logo-naranja.png';
-import LogoR from '../../assets/images/logo/logo-rosa.png';
 import { Container, Navbar } from 'react-bootstrap';
 
 const Topnavbar = ({ contactPageRef }) => {

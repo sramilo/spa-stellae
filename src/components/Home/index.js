@@ -1,6 +1,6 @@
 import './index.scss';
 import LimpiezaProfesionalImg from '../../assets/images/home-img/limpieza-profesional.png';
-import NuestrosServiciosImg from '../../assets/images/home-img/limpieza-coruña.png';
+import NuestrosServiciosImg from '../../assets/images/home-img/limpieza-coruna.png';
 import ClientesAvalanImg from '../../assets/images/home-img/clientes-avalan.png';
 import TrabajaNosotrosImg from '../../assets/images/home-img/trabajo-limpieza.png';
 import Loader from 'react-loaders';

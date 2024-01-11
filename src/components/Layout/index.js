@@ -2,9 +2,9 @@ import { Outlet } from 'react-router-dom';
 import Topnavbar from '../Topnavbar';
 import './index.scss';
 import { Col, Container, Modal, Row } from 'react-bootstrap';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../Footer';
-import CookieConsent, { getCookieConsentValue, resetCookieConsentValue } from "react-cookie-consent";
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 
 const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 
@@ -12,7 +12,7 @@ const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
 const Layout = () => {
 
     const email = "stellae&#64;gmail&#46;com";
-    const phoneNumber = "+34606665420";
+    const phoneNumber = "606665420";
     const facebookLink = "https://github.com/sramilo";
     const linkedinLink = "https://www.linkedin.com/in/samuel-ramilo";
     const instagramLink = "https://www.linkedin.com/in/samuel-ramilo";
@@ -173,8 +173,8 @@ const Layout = () => {
                                 Su consentimiento se aplica a los siguientes dominios: www.stellaelimpiezas.es<br/>
                                 Estas cookies son almacenadas por Google, de manera que no tenemos control sobre ellas o el modo en el que las utilizan. Por ello, Google nos presta un servicio de análisis que nos permite mejorar el contenido y la funcionalidad.<br/><br/>
                                 Más información y desactivación:<br/>
-                                <a style={{ color: "black" }} href="http://www.google.com/policies/privacy/" target="_blank">http://www.google.com/policies/privacy/</a><br/>
-                                <a style={{ color: "black" }} href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es" target="_blank">https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es</a>
+                                <a style={{ color: "black" }} href="http://www.google.com/policies/privacy/" target="_blank" rel="noreferrer">http://www.google.com/policies/privacy/</a><br/>
+                                <a style={{ color: "black" }} href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es" target="_blank" rel="noreferrer">https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es</a>
                                 </p>
                                 <h2>Cómo puedo cambiar o retirar mi consentimiento?</h2>
                                 <p>
