@@ -329,6 +329,7 @@
     animation-delay: 1s;
     background-color: $background-color;
     padding: 0;
+    overflow-x: hidden;
 
     .link {
         color: inherit;

@@ -27,8 +27,8 @@ const Contact = () => {
 
         const resolveWithSomeData = () => emailjs
             .sendForm(
-                'spa-stellae',
-                'template_lr211w6',
+                'spa-stellae', // spa-stellae-dev
+                'template_lr211w6', // template_ziymkdy
                 refForm.current,
                 'SGOYOzUe1CrlQwc_a'
             );
@@ -55,7 +55,7 @@ const Contact = () => {
             error: {
                 render() {
                     setIsLoading(false);
-                // When the promise reject, data will contains the error
+                    // When the promise reject, data will contains the error
                     return "Ha ocurrido un error. Por favor, inténtalo de nuevo en unos instantes.";
                 }
             }
@@ -185,7 +185,7 @@ const Contact = () => {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Row>
-                                    <Row className='mb-3 input-row'>
+                                    <Row className='mb-3 input-row position-relative'>
                                         <Col>
                                             {isLoading
                                             ?
@@ -198,6 +198,18 @@ const Contact = () => {
                                             </button>
                                             }
                                         </Col>
+                                        <ToastContainer
+                                            position={toast.POSITION.BOTTOM_RIGHT}
+                                            autoClose={7000}
+                                            hideProgressBar={false}
+                                            newestOnTop={false}
+                                            closeOnClick
+                                            rtl={false}
+                                            pauseOnFocusLoss
+                                            draggable
+                                            pauseOnHover
+                                            theme="light"
+                                        />
                                     </Row>
                                 </Form>
                             )}
@@ -235,18 +247,6 @@ const Contact = () => {
                     </Row>
                 </Col>
             </Row>
-            <ToastContainer
-                position={toast.POSITION.BOTTOM_RIGHT}
-                autoClose={7000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </Container>
         </>
     )

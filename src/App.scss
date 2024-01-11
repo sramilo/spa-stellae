@@ -27,6 +27,22 @@
   src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2');
 }
 
+@media (max-width: 480px) {
+    /* CSS that should be displayed if width is equal to or less than 480 goes here */
+    .Toastify__toast-container--bottom-right {
+      bottom: 4em;
+      left: -2em;
+    }
+}
+
+@media (min-width: 481px) {
+    /* CSS that should be displayed if width is equal to or less than 481px goes here */
+    .Toastify__toast-container--bottom-right {
+      bottom: 3em;
+      right: 0em;
+    }
+}
+
 :root {
   --toastify-color-success: #87CEEB;
 }
