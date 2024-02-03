@@ -1,4 +1,4 @@
-# React portfolio
+# React Services App
 
 Stellae limpiezas single page application created with React framework. https://stellaelimpiezas.es
 
